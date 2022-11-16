@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import posts from './routers/posts.js'
+
 import mongoose from 'mongoose'
 import userRoutes from "./routers/users.js"
 import videoRoutes from "./routers/videos.js"
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true, limit:'30mb'}));
 app.use(cors());
 
-app.use('/posts',posts)
+
 
 app.use('/api/auth',authRoutes)
 app.use('/api/users',userRoutes)
