@@ -10,6 +10,8 @@ import SignIn from "./pages/SignIn";
 import Search from "./pages/Search";
 import { useSelector } from "react-redux";
 
+import "./App.css"
+
 const Container = styled.div`
   display: flex;
 `;
