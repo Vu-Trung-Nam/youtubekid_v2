@@ -140,7 +140,7 @@ const Video = () => {
 
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo?.videoUrl._id}`);
-    dispatch(like(currentUser._id));
+    dispatch(like(currentUser?._id));
   };
   const handleDislike = async () => {
     await axios.put(`/users/dislike/${currentVideo?.videoUrl._id}`);
