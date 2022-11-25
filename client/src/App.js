@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import { darkTheme, lightTheme } from "./utils/Theme";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
 import SignIn from "./pages/SignIn";
 import Search from "./pages/Search";
 import { useSelector } from "react-redux";
 
-import "./App.css"
+
 
 const Container = styled.div`
   display: flex;
@@ -38,13 +38,13 @@ function App() {
             <Wrapper>
               <Routes>
                 <Route path="/">
-                  <Route index element={<Home type="random" />} />
+                  <Route index element={currentUser ? <Home type="random" /> : <SignIn/> } />
                   <Route path="trends" element={<Home type="trend" />} />
                   <Route path="subscriptions" element={<Home type="sub" />} />
                   <Route path="search" element={<Search />} />
                   <Route
                     path="signin"
-                    element={currentUser ? <Home /> : <SignIn />}
+                    element={ <SignIn />}
                   />
                   <Route path="video">
                     <Route path=":id" element={<Video />} />

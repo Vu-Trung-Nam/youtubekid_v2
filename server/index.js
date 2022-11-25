@@ -11,13 +11,11 @@ import cookieParser from 'cookie-parser'
 
 const app = express();
 const PORT = process.env.port || 5000;
-const URI = 'mongodb+srv://adminhuy:kVz8SqGajItHqngh@cluster0.oqrfzyy.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true, limit:'30mb'}));
 app.use(cors());
-
 
 
 app.use('/api/auth',authRoutes)
@@ -35,8 +33,12 @@ app.use((err,req,res, next)=>{
         message,
     })
 })
+const URI = 'mongodb+srv://ADMINHYU:vK62PHYK13fCLYaT@databaseuser.5tiezak.mongodb.net/?retryWrites=true&w=majority'
 
-mongoose.connect(URI,{useNewUrlParser:true, useUnifiedTopology:true})
+mongoose.connect(URI,{
+    
+    useNewUrlParser:true, 
+    useUnifiedTopology:true})
     .then(()=>{
         console.log("Connected to DB")
     }).catch(err=>{

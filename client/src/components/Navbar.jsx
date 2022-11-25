@@ -4,8 +4,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Upload from "./Upload";
+import { loginSuccess } from "../redux/userSlice";
 
 const Container = styled.div`
   position: sticky;
@@ -79,6 +80,15 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+
+
+  const logout = () =>{
+    localStorage.removeItem('curentUser')
+    localStorage.removeItem('persist:root')
+    dispatch(loginSuccess())
+    navigate('/signin')
+  }
   return (
     <>
       <Container>
@@ -92,7 +102,7 @@ const Navbar = () => {
           </Search>
           {currentUser ? (
             <User>
-              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
+              <VideoCallOutlinedIcon onClick={() => setOpen(true)}/> 
               <Avatar src={currentUser.img} />
               {currentUser.name}
             </User>
@@ -104,6 +114,12 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
+            {currentUser && <>
+              <Button onClick={logout}>
+              Logout
+            </Button>
+            </>
+            }
         </Wrapper>
       </Container>
       {open && <Upload setOpen={setOpen} />}
