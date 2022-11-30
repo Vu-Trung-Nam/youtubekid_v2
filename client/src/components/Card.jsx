@@ -52,6 +52,8 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
+
+
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
 
