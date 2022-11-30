@@ -1,6 +1,8 @@
 import Video from "../models/Video.js"
 import Comment from "../models/Conment.js"
 import { createError } from "../error.js"
+
+
 export const getComments = async (req, res, next)=>{
     try {
         const comments = await Comment.find({videoId:req.params.videoId})

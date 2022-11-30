@@ -11,12 +11,15 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+
 const Container = styled.div`
   flex: 1;
   background-color: ${({ theme }) => theme.bgLighter};
   height: 100vh;
   color: ${({ theme }) => theme.text};
   font-size: 14px;
+
   position: sticky;
   top: 0;
 `;
@@ -75,7 +78,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
     <div>
       {currentUser && <>
         <Container>
-      <Wrapper>
+          <Wrapper>
           <Logo>
             <Img src={LamaTube} />
             LamaTube
