@@ -86,20 +86,20 @@ const Navbar = () => {
   const logout = () =>{
     localStorage.removeItem('curentUser')
     localStorage.removeItem('persist:root')
-    dispatch(loginSuccess())
+    dispatch(logout())
     navigate('/signin')
   }
   return (
     <>
       <Container>
         <Wrapper>
-          <Search>
+          {currentUser && <Search>
             <Input
               placeholder="Search"
               onChange={(e) => setQ(e.target.value)}
             />
             <SearchOutlinedIcon onClick={()=>navigate(`/search?q=${q}`)}/>
-          </Search>
+          </Search>}
           {currentUser ? (
             <User>
               <VideoCallOutlinedIcon onClick={() => setOpen(true)}/> 

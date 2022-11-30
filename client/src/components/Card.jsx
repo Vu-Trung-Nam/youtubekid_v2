@@ -47,10 +47,10 @@ const ChannelName = styled.h2`
   margin: 9px 0px;
 `;
 
-const Info = styled.div`
-  font-size: 14px;
-  color: ${({ theme }) => theme.textSoft};
-`;
+// const Info = styled.div`
+//   font-size: 14px;
+//   color: ${({ theme }) => theme.textSoft};
+// `;
 
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
@@ -78,7 +78,7 @@ const Card = ({ type, video }) => {
           <Texts>
             <Title>{video.title}</Title>
             <ChannelName>{channel?.name}</ChannelName>
-            <Info>{video.views} views • {video.createdAt}</Info>
+            {/* <Info>{video.views} views • {video.createdAt}</Info> */}
           </Texts>
         </Details>
       </Container>

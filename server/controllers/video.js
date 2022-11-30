@@ -57,6 +57,17 @@ export const getVideo = async (req, res, next) => {
   }
 };
 
+export const getChannel = async (req, res, next) => {
+  try {
+    const channel = await Video.find(
+        req.userId
+    );
+    res.status(200).json(channel);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const addView = async (req, res, next) => {
   try {
     await Video.findByIdAndUpdate(req.params.id, {
